@@ -1,0 +1,46 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+helper.py	../web/helper.py	1;"	kind:file	line:1
+pd	../web/helper.py	/^import pandas as pd$/;"	kind:namespace	line:1
+json	../web/helper.py	/^import json$/;"	kind:namespace	line:2
+checkPostedData	../web/helper.py	/^def checkPostedData(postedData, functionName):$/;"	kind:function	line:6
+storeCorpusToDB	../web/helper.py	/^def storeCorpusToDB():$/;"	kind:function	line:14
+db.py	../web/db.py	1;"	kind:file	line:1
+MongoClient	../web/db.py	/^from pymongo import MongoClient$/;"	kind:namespace	line:1
+client	../web/db.py	/^client = MongoClient("mongodb:\/\/db:27017")$/;"	kind:variable	line:3
+db	../web/db.py	/^db = client.anotasiAlQuran$/;"	kind:variable	line:4
+corpusAQ	../web/db.py	/^corpusAQ = db["corpusAQ"]$/;"	kind:variable	line:5
+users	../web/db.py	/^users = db["users"]$/;"	kind:variable	line:6
+anotation	../web/db.py	/^anotation = db["anotation"]/;"	kind:variable	line:7
+api.py	../web/api.py	1;"	kind:file	line:1
+Flask	../web/api.py	/^from flask import Flask, jsonify, request$/;"	kind:namespace	line:1
+jsonify	../web/api.py	/^from flask import Flask, jsonify, request$/;"	kind:namespace	line:1
+request	../web/api.py	/^from flask import Flask, jsonify, request$/;"	kind:namespace	line:1
+Api	../web/api.py	/^from flask_restful import Api, Resource$/;"	kind:namespace	line:2
+Resource	../web/api.py	/^from flask_restful import Api, Resource$/;"	kind:namespace	line:2
+bcrypt	../web/api.py	/^import bcrypt$/;"	kind:namespace	line:5
+logging	../web/api.py	/^import logging$/;"	kind:namespace	line:6
+FindSurah	../web/api.py	/^class FindSurah(Resource):$/;"	kind:class	line:9
+post	../web/api.py	/^    def post(self):$/;"	kind:member	line:10
+Register	../web/api.py	/^class Register(Resource):$/;"	kind:class	line:31
+post	../web/api.py	/^    def post(self):$/;"	kind:member	line:32
+StorePosition	../web/api.py	/^class StorePosition(Resource):$/;"	kind:class	line:86
+post	../web/api.py	/^    def post(self):$/;"	kind:member	line:87
+Login	../web/api.py	/^class Login(Resource):$/;"	kind:class	line:111
+post	../web/api.py	/^    def post(self):$/;"	kind:member	line:112
+DumpCorpusToDB	../web/api.py	/^class DumpCorpusToDB(Resource):$/;"	kind:class	line:135
+post	../web/api.py	/^    def post(self):$/;"	kind:member	line:136
+app.py	../web/app.py	1;"	kind:file	line:1
+Flask	../web/app.py	/^from flask import Flask, jsonify, request$/;"	kind:namespace	line:1
+jsonify	../web/app.py	/^from flask import Flask, jsonify, request$/;"	kind:namespace	line:1
+request	../web/app.py	/^from flask import Flask, jsonify, request$/;"	kind:namespace	line:1
+Api	../web/app.py	/^from flask_restful import Api, Resource$/;"	kind:namespace	line:2
+Resource	../web/app.py	/^from flask_restful import Api, Resource$/;"	kind:namespace	line:2
+app	../web/app.py	/^app = Flask(__name__)$/;"	kind:variable	line:5
+api	../web/app.py	/^api = Api(app)$/;"	kind:variable	line:8
+HelloWorld	../web/app.py	/^def HelloWorld():$/;"	kind:function	line:16
+Echo	../web/app.py	/^def Echo():$/;"	kind:function	line:20
