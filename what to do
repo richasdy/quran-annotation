@@ -3,6 +3,7 @@ sudo systemctl start docker
 
 register done
 dump data done
-read data pending
-login pending
+read data done
+login done
+frontend pending
 bab 1 pending

@@ -4,6 +4,7 @@ from helper import *
 from db import *
 import bcrypt
 import logging
+from lang_trans.arabic import buckwalter
 
 
 class FindSurah(Resource):
@@ -20,11 +21,45 @@ class FindSurah(Resource):
             return jsonify(response)
         else:
             surahNumber = postedData["surahNumber"]
-            surahNumber = int(surahNumber)
+            surahNumber = str(surahNumber)
+            condition = ".*\\("+surahNumber+"\\:.*"
+
+            # surahFromDB = corpusAQ.find({"_id": {"$regex": ".*\\(112\\:.*"}})
+            surahFromDB = corpusAQ.find({"_id": {"$regex": condition}})
+            lastWord = "0"
+            currentWord = "0"
+            surah = ""
+            subWordSurah = corpusAQ.find(
+                {"_id": {"$regex": condition}}).count()
+            currentAyat = "0"
+            totalAyat = 0
+            lastAyat = "0"
+
+            for doc in surahFromDB:
+                splittedLocation = str(doc["_id"]).split(":")
+                currentWord = splittedLocation[2]
+                if(currentWord != lastWord):
+                    if(lastWord == 0):
+                        surah = surah+str(doc["buckwalter"])
+                        lastWord = currentWord
+                    else:
+                        surah = surah + " " + str(doc["buckwalter"])
+                        lastWord = currentWord
+                else:
+                    surah = surah+str(doc["buckwalter"])
+
+                currentAyat = splittedLocation[1]
+                if(currentAyat != lastAyat):
+                    totalAyat = totalAyat + 1
+                    lastAyat = currentAyat
+
+            arabicSurah = buckwalter.untransliterate(surah)
             response = {
-                "responseMessage": "Success",
-                "responseCode": 200
-            }
+                "responseCode": 200,
+                "responseMessageArabic": arabicSurah,
+                "responseMessageLatin": surah,
+                "responseMessageSubWordSurah": subWordSurah,
+                "totalAyat": totalAyat}
             return jsonify(response)
 
 
