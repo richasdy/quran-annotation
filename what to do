@@ -1,0 +1,8 @@
+### START DOCKER ###
+sudo systemctl start docker
+
+register done
+dump data done
+read data pending
+login pending
+bab 1 pending

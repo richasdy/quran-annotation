@@ -43,7 +43,7 @@ class Register(Resource):
             })[0]["username"]
             if(username == findUsers):
                 response = {
-                    "responseCode": 200,
+                    "responseCode": 408,
                     "responseMessage": "Your Register Is Failed, Because Username Taken"
                     }
                 return jsonify(response)
