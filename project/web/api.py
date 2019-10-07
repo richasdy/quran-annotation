@@ -45,6 +45,7 @@ class Register(Resource):
                 response = {
                     "responseCode": 200,
                     "responseMessage": "Your Register Is Failed, Because Username Taken"
+                    }
                 return jsonify(response)
 
             else:
@@ -78,8 +79,7 @@ class Register(Resource):
             # STEP 5: GIVE RESPONSE
             response = {
                 "responseCode": 200,
-                "responseMessage": "Your Register Is Success",
-                "where":"outside if"
+                "responseMessage": "Your Register Is Success"
             }
             return jsonify(response)
 

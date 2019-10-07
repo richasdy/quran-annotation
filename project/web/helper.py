@@ -20,11 +20,11 @@ def storeCorpusToDB():
 
     for index, row in corpusAqDataFrame.iterrows():
         corpusAQ.insert({
-            "location": row["location"],
+            "_id": str(row["location"]),
             "buckwalter": row["buckwalter"],
             "partOfSpeech": row["part of speech"],
             "treebank": row["treebank"],
             "arabic": row["arabic"],
             "meaning": ""
         })
-        print("Data-"+str(index)+" Stored")
+        print(str(row["location"])+" Stored")
