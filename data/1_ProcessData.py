@@ -7,7 +7,7 @@ startTime = time.time()
 
 # read csv files and convert it to dataframe
 print('Read CSV Files Start')
-corpusAqDataFrame = pd.read_csv('corpusaq.csv', delimiter=',', index_col=None)
+corpusAqDataFrame = pd.read_csv('corpusaq-full.csv', delimiter=',', index_col=None)
 print('Read CSV Files Finish')
 
 # add an arabic translation with buckwalter to the dataframe

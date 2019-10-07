@@ -45,7 +45,7 @@ class Register(Resource):
                 response = {
                     "responseCode": 408,
                     "responseMessage": "Your Register Is Failed, Because Username Taken"
-                    }
+                }
                 return jsonify(response)
 
             else:
@@ -118,17 +118,31 @@ class Login(Resource):
         username = postedData["username"]
         password = postedData["password"]
 
-        hashedPassword = users.find({
-            "username": username
-        })[0]["password"]
+        if users.count() > int(0):
+            hashedPassword = users.find({
+                "username": username
+            })[0]["password"]
 
-        if bcrypt.hashpw(password.encode('utf8'), hashedPassword) == hashedPassword:
-            return True
+            if bcrypt.hashpw(password.encode('utf8'), hashedPassword) == hashedPassword:
+                # STEP 3: GIVE RESPONSE
+                response = {
+                    "responseCode": 200,
+                    "responseMessage": "Login Succeed"
+                }
+                return jsonify(response)
+                # render home
+            else:
+                # STEP 3: GIVE RESPONSE
+                response = {
+                    "responseCode": 407,
+                    "responseMessage": "Your Username Or Password Didn't Match"
+                }
+                return jsonify(response)
         else:
             # STEP 3: GIVE RESPONSE
-            reponse = {
-                "responseCode": 407,
-                "responseMessage": "Your Username Or Password Didn't Match"
+            response = {
+                "responseCode": 409,
+                "responseMessage": "This Username Never Registered, Please Register First"
             }
             return jsonify(response)
 
