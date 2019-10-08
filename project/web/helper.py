@@ -18,6 +18,9 @@ def storeCorpusToDB():
         'corpusaqWithArabic.csv', delimiter=',', index_col=None)
     print('Read CSV Files Finish')
 
+    # drop existing data
+    corpusAQ.drop()
+
     for index, row in corpusAqDataFrame.iterrows():
         corpusAQ.insert({
             "_id": str(row["location"]),
