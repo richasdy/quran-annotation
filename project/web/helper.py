@@ -12,7 +12,7 @@ def checkPostedData(postedData, functionName):
 
 
 def storeCorpusToDB():
-    # read csv files and convert it to dataframe
+    # read csv files and convert it to dataframe (corpusaq)
     print('Read CSV Files Start')
     corpusAqDataFrame = pd.read_csv(
         'corpusaqWithArabic.csv', delimiter=',', index_col=None)
@@ -30,4 +30,25 @@ def storeCorpusToDB():
             "arabic": row["arabic"],
             "meaning": ""
         })
-        print(str(row["location"])+" Stored")
+        print("corpus = "+str(row["location"])+" Stored")
+
+    # read csv files and convert it to dataframe (wordbyword)
+    print('Read CSV Files Start')
+    wordbywordDataFrame = pd.read_csv(
+        'wordbywordtranslation.csv', delimiter=',', index_col=None)
+    print('Read CSV Files Finish')
+
+    # drop existing data
+    wordbyword.drop()
+
+    for index, row in wordbywordDataFrame.iterrows():
+        _id = ""
+        _id = str(row["suratnumber"])+":"+str(row["ayatnumber"])+":"+str(row["wordnumber"])
+        wordbyword.insert({
+            "_id": _id,
+            "suratnumber": row["suratnumber"],
+            "ayatnumber": row["ayatnumber"],
+            "wordnumber": row["wordnumber"],
+            "translation": row["translation"]
+        })
+        print("wordbyword = "+_id+" Stored")

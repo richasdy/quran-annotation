@@ -22,15 +22,15 @@ class FindSurah(Resource):
         else:
             surahNumber = postedData["surahNumber"]
             surahNumber = str(surahNumber)
-            condition = ".*\\("+surahNumber+"\\:.*"
+            corpusCondition = ".*\\("+surahNumber+"\\:.*"
 
             # surahFromDB = corpusAQ.find({"_id": {"$regex": ".*\\(112\\:.*"}})
-            surahFromDB = corpusAQ.find({"_id": {"$regex": condition}})
+            surahFromDB = corpusAQ.find({"_id": {"$regex": corpusCondition}})
             lastWord = "0"
             currentWord = "0"
             surah = ""
             subWordSurah = corpusAQ.find(
-                {"_id": {"$regex": condition}}).count()
+                {"_id": {"$regex": corpusCondition}}).count()
             currentAyat = "0"
             totalAyat = 0
             lastAyat = "0"
@@ -54,10 +54,19 @@ class FindSurah(Resource):
                     lastAyat = currentAyat
 
             arabicSurah = buckwalter.untransliterate(surah)
+            
+            meaningFromDB =  wordbyword.find({"suratnumber": int(surahNumber)})
+            meaningResponse = ""
+            for doc in meaningFromDB:
+                if meaningResponse == "":
+                    meaningResponse = meaningResponse + str(doc["translation"])
+                else:
+                    meaningResponse = meaningResponse + " " + str(doc["translation"])
+
             response = {
                 "responseCode": 200,
                 "responseMessageArabic": arabicSurah,
-                "responseMessageLatin": surah,
+                "responseMessageMeaning": meaningResponse,
                 "responseMessageSubWordSurah": subWordSurah,
                 "totalAyat": totalAyat}
             return jsonify(response)

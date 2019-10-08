@@ -5,3 +5,4 @@ db = client.anotasiAlQuran
 corpusAQ = db["corpusAQ"]
 users = db["users"]
 anotation = db["anotation"]
+wordbyword = db["wordbyword"]
